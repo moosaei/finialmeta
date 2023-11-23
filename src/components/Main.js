@@ -3,13 +3,14 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Booking from "./Booking";
 import ConfirmedBooking from "./ConfirmedBooking";
 import Header from "./Header";
+import { Helmet } from "react-helmet";
+
 
 
 const Main = () => {
 
-    // const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"])
 
-    //Chrome was blocking running the script on the index page so I added it here. "https://chromestatus.com/feature/5629709824032768"
+
     const seededRandom = function (seed) {
         var m = 2**35 - 31;
         var a = 185852;
@@ -52,6 +53,13 @@ const Main = () => {
 
     return(
         <main>
+             <Helmet>
+        <title>Little Lemon Booking Website</title>
+        <meta property="og:title" content="Little Lemon Booking Website" />
+        <meta property="og:description" content="Little Lemon Booking Website" />
+        <meta property="og:url" content="www.littellemon.com" />
+        {/* Add more OG tags as needed */}
+      </Helmet>
             <Routes>
                 <Route path="/" element={<Header />} />
                 <Route path="/booking" element={<Booking availableTimes={state} dispatch={dispatch} submitForm={submitForm}/>} />
